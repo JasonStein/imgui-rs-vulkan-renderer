@@ -205,6 +205,14 @@ pub fn create_vulkan_pipeline(
     let dynamic_states_info =
         vk::PipelineDynamicStateCreateInfo::builder().dynamic_states(&dynamic_states);
 
+    let depth_stencil_state_create_info = vk::PipelineDepthStencilStateCreateInfo::builder()
+        .depth_test_enable(true)
+        .depth_write_enable(true)
+        .depth_compare_op(vk::CompareOp::ALWAYS)
+        .depth_bounds_test_enable(false)
+        .stencil_test_enable(false)
+        .build();
+
     let pipeline_info = [vk::GraphicsPipelineCreateInfo::builder()
         .stages(&shader_states_infos)
         .vertex_input_state(&vertex_input_info)
@@ -217,6 +225,7 @@ pub fn create_vulkan_pipeline(
         .layout(pipeline_layout)
         .render_pass(render_pass)
         .subpass(0)
+        .depth_stencil_state(&depth_stencil_state_create_info)
         .build()];
 
     let pipeline = unsafe {
