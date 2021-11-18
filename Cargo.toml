@@ -19,7 +19,7 @@ exclude = [
 [dependencies]
 log = "0.4"
 imgui = "0.6.1"
-ash = ">=0.29"
+ash = "0.31.0"
 ultraviolet = "0.4"
 
 [dev-dependencies]
