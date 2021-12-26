@@ -18,16 +18,16 @@ exclude = [
 
 [dependencies]
 log = "0.4"
-imgui = "0.6.1"
-ash = "0.31.0"
+imgui = "0.8.0"
+ash = "0.33.3"
 ultraviolet = "0.4"
 
 [dev-dependencies]
 simple_logger = "1.6.0"
-winit = "0.19"
-raw-window-handle = "0.3"
+winit = "0.26.0"
+raw-window-handle = "0.4.2"
 
 [dev-dependencies.imgui-winit-support]
-version = "^0.3"
+version = "^0.8"
 default-features = false
-features = ["winit-19"]
+features = ["winit-26"]
