@@ -1,5 +1,5 @@
 use crate::RendererResult;
-use ash::{version::DeviceV1_0, vk, Device};
+use ash::{vk, Device};
 pub use buffer::*;
 use std::{ffi::CString, mem};
 pub use texture::*;
@@ -296,7 +296,7 @@ pub fn create_vulkan_descriptor_set(
 mod buffer {
 
     use crate::RendererResult;
-    use ash::{version::DeviceV1_0, vk, Device};
+    use ash::{vk, Device};
     use std::mem;
 
     pub fn create_and_fill_buffer<T: Copy>(
@@ -380,7 +380,7 @@ mod texture {
     use super::buffer::*;
     use crate::RendererResult;
     use ash::vk;
-    use ash::{version::DeviceV1_0, Device};
+    use ash::Device;
 
     pub struct Texture {
         buffer: vk::Buffer,

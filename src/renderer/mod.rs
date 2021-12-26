@@ -1,10 +1,7 @@
 mod vulkan;
 
 use crate::RendererError;
-use ash::{
-    version::{DeviceV1_0, InstanceV1_0},
-    vk, Device, Instance,
-};
+use ash::{vk, Device, Instance};
 use imgui::{Context, DrawCmd, DrawCmdParams, DrawData};
 use mesh::*;
 use ultraviolet::projection::orthographic_vk;
@@ -387,10 +384,7 @@ mod mesh {
 
     use super::{vulkan::*, RendererVkContext};
     use crate::RendererResult;
-    use ash::{
-        version::{DeviceV1_0, InstanceV1_0},
-        vk, Device,
-    };
+    use ash::{vk, Device};
     use imgui::{DrawData, DrawVert};
     use std::mem::size_of;
 
