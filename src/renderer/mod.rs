@@ -109,12 +109,20 @@ impl Renderer {
         let fonts_texture = {
             let mut fonts = imgui.fonts();
 
+            let device_properties = unsafe {
+                vk_context
+                     .instance()
+                     .get_physical_device_properties(vk_context.physical_device())
+             };
+
             // Texture width desired by user before building the atlas.
             // Must be a power-of-two. If you have many glyphs and your graphics API has texture size
             // restrictions, you may want to increase texture width to decrease the height.
-            // Apple's Metal API (MTLTextureDescriptor) only supports max size of 16384 (128x128).
-            // We are defining the max width to be 16384 here to support Apple devices.
-            fonts.tex_desired_width = 16384;
+            // For example, Apple's Metal API (MTLTextureDescriptor) only supports
+            // max size of 16384 (128x128) for texture wdith/height on M1 devices.
+            // We are defining the max width to be the max image dimension size get from device
+            // properties here to be safe.
+            fonts.tex_desired_width = device_properties.limits.max_image_dimension2_d as i32;
 
             let atlas_texture = fonts.build_rgba32_texture();
             let memory_properties = unsafe {
