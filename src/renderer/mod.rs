@@ -108,6 +108,7 @@ impl Renderer {
         // Font texture
         let fonts_texture = {
             let mut fonts = imgui.fonts();
+            fonts.tex_desired_width = 16384;
             let atlas_texture = fonts.build_rgba32_texture();
             let memory_properties = unsafe {
                 vk_context
